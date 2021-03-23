@@ -143,7 +143,7 @@ class ModulatedTavisCumming(oqs_emission_mps.OqsSystem):
                              self._sigmas[i].conj().T @ self._sigmas[i]
                              for i in range(self._num_emitters)], axis=0)
         # Interaction of the emitters with the cavity.
-        H_int = np.sum([self._sigmas[i].conj().T @ self._a +
+        H_int = self._coup_const * np.sum([self._sigmas[i].conj().T @ self._a +
                         self._a.conj().T @ self._sigmas[i]
                         for i in range(self._num_emitters)], axis=0)
         # Decay of the cavity mode.
